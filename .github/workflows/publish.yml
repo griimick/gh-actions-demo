@@ -40,8 +40,8 @@ jobs:
           VERSION: ${{ github.ref }}
         with:
           allowUpdates: true
-          draft: false
-          prerelease: false
+          draft: true
+          prerelease: true
 
       - name: Upload zip file
         id: upload_zip
