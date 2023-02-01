@@ -13,9 +13,9 @@ jobs:
         with:
           submodules: 'true'
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x' # You might need to adjust this value to your own version
+          node-version: '16' # You might need to adjust this value to your own version
       - name: Build
         id: build
         run: |
@@ -38,3 +38,10 @@ jobs:
             ctp-macchiato.css
             ctp-mocha.css
             ctp-oled.css
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./${{ env.PLUGIN_NAME }}/
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
