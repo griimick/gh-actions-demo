@@ -24,7 +24,7 @@ jobs:
           mkdir ${{ env.PLUGIN_NAME }}/assets # folder for icon
           cp assets/icon.png ${{ env.PLUGIN_NAME }}/assets # move icon
           cp README.md package.json index.html index.js ctp-latte.css ctp-frappe.css ctp-macchiato.css ctp-mocha.css ctp-oled.css ${{ env.PLUGIN_NAME }} # move build assets
-          zip -r ${{ env.PLUGIN_NAME }}-${{ github.ref }}.zip ${{ env.PLUGIN_NAME }} # create zip
+          zip -r ${{ env.PLUGIN_NAME }}-${{ github.ref_name }}.zip ${{ env.PLUGIN_NAME }} # create zip
       - name: Create Release
         uses: softprops/action-gh-release@v1
         id: create_release
@@ -32,7 +32,7 @@ jobs:
           draft: true
           files: |
             package.json
-            ${{ env.PLUGIN_NAME }}-${{ github.ref }}.zip
+            ${{ env.PLUGIN_NAME }}-${{ github.ref_name }}.zip
             ctp-latte.css
             ctp-frappe.css
             ctp-macchiato.css
